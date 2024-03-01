@@ -1,0 +1,40 @@
+<div class="container d-flex">
+  <div class="main">
+    <!-- Bloc 1 -->
+    <div class="bloc1">
+      <h3 class="titre">Task</h3>
+      <div>
+        <h6 class="titre" (click)="clear()">Clear</h6>
+        <img src="" alt="" />
+      </div>
+    </div>
+
+    <!-- Bloc 2 -->
+    <div class="bloc2">
+      <form [formGroup]="newChecklistForm" (ngSubmit)="addChecklist()">
+        <input
+          type="text"
+          placeholder="New task"
+          class="form-control"
+          formControlName="name"
+        />
+        <button type="submit" class="btn btn-primary">Add task</button>
+      </form>
+    </div>
+    <!-- Bloc 3 -->
+    <div class="bloc3 d-flex" *ngFor="let item of checklists">
+      <div class="check flex-fill">
+        <input type="checkbox" />
+        <span>{{ item.name }}</span>
+      </div>
+      <div class="action">
+        <img src="../assets/icon-edit.png" alt="" />
+        <img
+          src="../assets/icon-delete.png"
+          alt=""
+          (click)="deleteChecklist(item)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
